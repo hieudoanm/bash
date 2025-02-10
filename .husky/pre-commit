@@ -1,2 +1,5 @@
+pnpm run start
 pnpm run build
+pnpm run lint
+pnpm run format
 git add -A

@@ -17,17 +17,26 @@
   "main": "index.js",
   "packageManager": "pnpm@10.2.1",
   "scripts": {
+    "start": "pnpm ts-node ./main.ts",
     "format": "prettier --cache --write .",
+    "lint": "eslint --fix .",
     "prebuild": "rimraf ./docs",
     "build": "docsify init ./docs",
     "serve": "docsify serve ./docs",
     "prepare": "husky || true"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/node": "22.13.1",
     "docsify-cli": "4.4.4",
+    "eslint": "9.20.0",
+    "globals": "^15.14.0",
     "husky": "9.1.7",
     "prettier": "3.5.0",
-    "rimraf": "6.0.1"
+    "rimraf": "6.0.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.23.0"
   },
   "resolutions": {
     "got": "14.4.6",
