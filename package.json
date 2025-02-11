@@ -29,7 +29,7 @@
     "@eslint/js": "9.20.0",
     "@types/node": "22.13.1",
     "docsify-cli": "4.4.4",
-    "eslint": "9.20.0",
+    "eslint": "9.20.1",
     "globals": "15.14.0",
     "husky": "9.1.7",
     "prettier": "3.5.0",
