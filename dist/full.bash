@@ -1,12 +1,34 @@
 #!/bin/bash
 
-# Docker
+### Docker Shortcuts ###
 
-alias dlist='docker ps -a'
+# List containers / images
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dimg='docker images'
+
+# Docker Compose shortcut
 alias dc='docker compose'
-alias dkillall='docker kill $(docker ps -q)'
-alias drmall='docker rm $(docker ps -a -q)'
-alias drmiall='docker rmi $(docker images -q)'
+
+# Kill all running containers
+alias dkillall='docker kill $(docker ps -q) 2>/dev/null || echo "No containers to kill."'
+
+# Remove all stopped containers
+alias drmall='CONTAINERS=$(docker ps -aq); \
+  [ -n "$CONTAINERS" ] && docker rm -f $CONTAINERS || echo "No containers to remove."'
+
+# Remove all Docker images
+alias drmiall='IMAGES=$(docker images -q); \
+  [ -n "$IMAGES" ] && docker rmi -f $IMAGES || echo "No images to remove."'
+
+# Stop all containers (safe version)
+alias dstopall='docker stop $(docker ps -q) 2>/dev/null || echo "No containers to stop."'
+
+# Remove dangling resources
+alias dclean='docker system prune -f'
+
+# Full cleanup: containers, images, networks, build cache
+alias dfullclean='docker system prune -a --volumes -f'
 
 # Git
 
@@ -198,11 +220,34 @@ alias gsetnamelocal="git config --local user.name "
 alias gsetemailglobal="git config --global user.email "
 alias gsetnameglobal="git config --global user.name "
 
-# Heroku
+# --- Heroku Helpers ---
 
-alias heroku-logs='heroku logs --tail --app '
-alias heroku-open='heroku apps:open --app '
-alias heroku-restart='heroku ps:restart web.1 --app '
+# Tail logs
+heroku-logs() {
+  if [ -z "$1" ]; then
+    echo "Usage: heroku-logs <app-name>"
+    return 1
+  fi
+  heroku logs --tail --app "$1"
+}
+
+# Open app in browser
+heroku-open() {
+  if [ -z "$1" ]; then
+    echo "Usage: heroku-open <app-name>"
+    return 1
+  fi
+  heroku apps:open --app "$1"
+}
+
+# Restart dyno(s)
+heroku-restart() {
+  if [ -z "$1" ]; then
+    echo "Usage: heroku-restart <app-name>"
+    return 1
+  fi
+  heroku ps:restart web.1 --app "$1"
+}
 
 # MacOS
 
@@ -225,10 +270,100 @@ alias delete-ds-store="find . -name ".DS_Store" -delete"
 alias kill-port='sudo lsof -i tcp:'
 alias hex='openssl rand -hex 32'
 
-## Windows
+#
+# Windows → macOS Command Compatibility Layer
+#
+# Drop this file into your shell config:
+#   source ~/windows-aliases.sh
+#
+# Provides familiar Windows CLI commands on macOS.
 
+
+### -----------------------------
+###  Basic Terminal Commands
+### -----------------------------
+
+# Windows: cls → Clear screen
 alias cls='clear'
+
+# Windows: rst / reset → Reset terminal
 alias rst='reset'
+
+
+### -----------------------------
+###  Files & Directories
+### -----------------------------
+
+# dir → ls -al (detailed directory listing)
+alias dir='ls -al'
+
+# copy → cp
+alias copy='cp'
+
+# move → mv
+alias move='mv'
+
+# del / erase → rm
+alias del='rm'
+alias erase='rm'
+
+# md / mk → mkdir
+alias md='mkdir'
+alias mk='mkdir'
+
+# ren → mv (rename file)
+alias ren='mv'
+
+# type → cat (print file contents)
+alias type='cat'
+
+
+### -----------------------------
+###  Processes & System Info
+### -----------------------------
+
+# tasklist → ps aux
+alias tasklist='ps aux'
+
+# taskkill → kill
+alias taskkill='kill'
+
+# ipconfig → ifconfig (network info)
+alias ipconfig='ifconfig'
+
+# hostname → hostname (same command exists but included for completeness)
+alias hostname='hostname'
+
+
+### -----------------------------
+###  Network Utilities
+### -----------------------------
+
+# ping (same command exists)
+alias ping='ping'
+
+# tracert → traceroute
+alias tracert='traceroute'
+
+
+### -----------------------------
+###  Extra Quality-of-Life Aliases
+### -----------------------------
+
+# cls with scrollback reset (optional)
+# alias cls='printf "\033c"'
+
+
+### -----------------------------
+###  Safety Notes
+### -----------------------------
+# These aliases intentionally keep behavior simple.
+# If you need more advanced Windows emulation, consider:
+#   - Homebrew packages (e.g., cowsay, coreutils)
+#   - Installing PowerShell (brew install --cask powershell)
+
+
+### END
 
 # Python
 
@@ -246,14 +381,18 @@ function pyinstall() {
 
 alias pylint='python3 -m pylint $(git ls-files "*.py")'
 
-# Terraform
+# Terraform Shortcuts (Compact)
 
 alias tf='terraform'
-alias tf-init='terraform init '
-alias tf-apply='terraform apply '
-alias tf-destroy='terraform destroy '
-alias tf-fmt='terraform fmt '
-alias tf-validate='terraform validate '
-alias tf-show='terraform show '
-alias tf-state-list='terraform state list '
-alias tf-output='terraform output '
+
+tf-init()      { terraform init "$@"; }
+tf-plan()      { terraform plan "$@"; }
+tf-apply()     { terraform apply "$@"; }
+tf-apply-auto(){ terraform apply -auto-approve "$@"; }
+tf-destroy()   { terraform destroy "$@"; }
+tf-destroy-auto(){ terraform destroy -auto-approve "$@"; }
+tf-fmt()       { terraform fmt "$@"; }
+tf-validate()  { terraform validate "$@"; }
+tf-show()      { terraform show "$@"; }
+tf-state()     { terraform state "$@"; }
+tf-output()    { terraform output "$@"; }
