@@ -1,5 +1,9 @@
 # Bash
 
+```bash
+curl -fsSL https://raw.githubusercontent.com/hieudoanm/bash/master/install.sh | bash
+```
+
 ## git
 
 ```bash

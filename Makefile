@@ -1,4 +1,4 @@
 build:
-	python3 -m ruff check
-	python3 -m ruff format
+	uvx ruff check
+	uvx ruff format
 	python3 -m main
