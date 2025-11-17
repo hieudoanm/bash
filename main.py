@@ -14,6 +14,11 @@ def main():
     # Build README.md (Markdown output)
     # --------------------------------
     markdown_sections = []
+
+    # Add curl installation command at the top
+    install_cmd = "```bash\ncurl -fsSL https://raw.githubusercontent.com/hieudoanm/bash/master/install.sh | bash\n```"
+    markdown_sections.append(install_cmd)
+
     for script in scripts:
         name = script.replace(".bash", "")
         with open(os.path.join(src_dir, script), "r", encoding="utf-8") as f:
