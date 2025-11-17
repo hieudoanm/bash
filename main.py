@@ -9,6 +9,7 @@ def main():
     os.makedirs(dist_dir, exist_ok=True)
 
     scripts = os.listdir(src_dir)
+    scripts.sort()
 
     # --------------------------------
     # Build README.md (Markdown output)
