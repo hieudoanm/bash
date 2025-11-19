@@ -8,7 +8,7 @@ curl -fsSL https://raw.githubusercontent.com/hieudoanm/bash/master/install.sh | 
 
 ```bash
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
 # Colors
 GREEN="\033[0;32m"
