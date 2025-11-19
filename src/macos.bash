@@ -4,12 +4,6 @@
 
 # Brew
 
-function brew-update() {
-  brew update
-  brew upgrade
-  brew cleanup
-}
-
 function print-env() {
   lines=$(printenv);
   IFS=$'\n' sorted=$(sort <<< "${lines[*]}");
