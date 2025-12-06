@@ -39,6 +39,18 @@ const HomePage: NextPage = () => {
     return 'Not found';
   };
 
+  // Automatically detect correct base path for GitHub Pages
+  const getBasePath = (): string => {
+    // Example pathname on GitHub Pages: "/smart-invoice/index.html"
+    // We remove the file name and keep the folder: "/smart-invoice/"
+    const path = window.location.pathname;
+
+    // Remove file name OR index.html OR trailing parts
+    const base = path.replace(/\/[^/]*$/, '/');
+
+    return base === '/' ? '' : base; // localhost → ""
+  };
+
   const runOCR = async (): Promise<void> => {
     if (!image) {
       console.warn('[WARN] No image selected');
@@ -67,11 +79,14 @@ const HomePage: NextPage = () => {
 
       setOcrText(text);
 
-      console.log("\n[2] Loading ONNX model '/invoice-parser.onnx'...");
+      const basePath = getBasePath();
+      const modelURL = `${basePath}invoice-parser.onnx`;
+
+      console.log(`\n[2] Loading ONNX model ${modelURL}...`);
       const t3 = performance.now();
 
       const session: ort.InferenceSession = await ort.InferenceSession.create(
-        '/invoice-parser.onnx',
+        modelURL,
         { executionProviders: ['wasm'] }
       );
 
