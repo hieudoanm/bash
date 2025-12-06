@@ -1,0 +1,30 @@
+{
+  "name": "@invoice/apps",
+  "version": "0.0.1",
+  "description": "Invoice Apps",
+  "keywords": [
+    "invoice"
+  ],
+  "homepage": "https://github.com/hieudoanm/invoice#readme",
+  "bugs": {
+    "url": "https://github.com/hieudoanm/invoice/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hieudoanm/invoice.git"
+  },
+  "license": "GPL-3.0",
+  "author": "hieudoanm <hieumdoan@gmail.com> (https://hieudoanm.github.io)",
+  "packageManager": "pnpm@10.24.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "build": "turbo run build",
+    "format": "turbo run format",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "husky": "9.1.7",
+    "turbo": "2.6.3"
+  }
+}
