@@ -1,10 +1,29 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "@invoice/app",
+  "version": "0.0.1",
   "private": true,
+  "description": "Invoice",
+  "keywords": [
+    "invoice"
+  ],
+  "homepage": "https://github.com/hieudoanm/invoice#readme",
+  "bugs": {
+    "url": "https://github.com/hieudoanm/invoice/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hieudoanm/invoice.git"
+  },
+  "license": "GPL-3.0",
+  "author": "hieudoanm <hieumdoan@gmail.com> (https://hieudoanm.github.io)",
   "scripts": {
+    "format": "prettier --cache --write .",
+    "predev": "kill-port 3000",
     "dev": "next dev",
+    "prebuild": "rimraf .next ../../docs",
     "build": "next build",
+    "postbuild": "touch ../../docs/.nojekyll",
+    "prestart": "kill-port 3000",
     "start": "next start",
     "lint": "eslint"
   },
@@ -31,7 +50,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "daisyui": "5.5.8",
     "eslint": "^9.39.1",
-    "eslint-config-next": "16.0.7",
+    "eslint-confinvoice-next": "16.0.7",
     "kill-port": "2.0.1",
     "prettier": "3.7.4",
     "prettier-plugin-tailwindcss": "0.7.2",
