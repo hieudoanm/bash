@@ -1,4 +1,4 @@
-# Instagram
+# Invoice
 
-- [App](https://hieudoanm.github.io/ig)
-- [CLI](https://github.com/hieudoanm/ig/tree/master/packages/cli)
+- [App](https://hieudoanm.github.io/invoice)
+- [Data](https://github.com/hieudoanm/invoice/tree/master/packages/data)
