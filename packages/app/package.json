@@ -36,8 +36,8 @@
     "onnxruntime-web": "1.23.2",
     "opencv.js": "1.2.1",
     "pdf-lib": "1.17.1",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "tesseract.js": "6.0.1",
     "xlsx": "0.18.5"
   },
