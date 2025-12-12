@@ -32,7 +32,7 @@
     "@capacitor/core": "8.0.0",
     "@capacitor/ios": "8.0.0",
     "dexie": "4.2.1",
-    "next": "16.0.8",
+    "next": "16.0.9",
     "onnxruntime-web": "1.23.2",
     "opencv.js": "1.2.1",
     "pdf-lib": "1.17.1",
