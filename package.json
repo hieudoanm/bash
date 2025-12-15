@@ -1,17 +1,17 @@
 {
-  "name": "@invoice/apps",
+  "name": "@invoice/app",
   "version": "0.0.1",
-  "description": "Invoice Apps",
+  "description": "invoice",
   "keywords": [
     "invoice"
   ],
-  "homepage": "https://github.com/hieudoanm/invoice#readme",
+  "homepage": "https://hieudoanm.github.io/invoice",
   "bugs": {
     "url": "https://github.com/hieudoanm/invoice/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hieudoanm/invoice.git"
+    "url": "git+ssh://git@github.com/hieudoanm/invoice.git"
   },
   "license": "GPL-3.0",
   "author": "hieudoanm <hieumdoan@gmail.com> (https://hieudoanm.github.io)",
@@ -22,6 +22,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "test": "turbo run test",
     "build": "turbo run build",
     "format": "turbo run format",
     "prepare": "husky || true"
