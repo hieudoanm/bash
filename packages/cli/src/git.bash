@@ -31,7 +31,7 @@ function gcommitall() {
   echo "🔍🧭 Scanning for repositories..."
   echo
 
-  find . -type d -name ".git" -exec dirname {} \; | while read -r repo; do
+  find . -type d -name ".git" -exec dirname {} \; | sort | while read -r repo; do
     echo "══════════════════════════════════════"
     echo "📂🧠 Repo found: $repo"
     echo "➡️🚪 Entering repo..."
