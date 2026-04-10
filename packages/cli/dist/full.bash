@@ -195,6 +195,7 @@ function gpullall() {
   echo "========================================"
 
   find . -type d -name .git -prune -print |
+  sort |
   sed 's|/\.git$||' |
   xargs -I {} -P "$jobs" bash -c '
     repo="$1"
