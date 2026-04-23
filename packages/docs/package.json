@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "hieudoanm <hieumdoan@gmail.com> (https://hieudoanm.github.io)",
   "license": "GPL-3.0",
-  "packageManager": "pnpm@10.33.1",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "build": "rimraf ../../docs && docsify init ../../docs"
   },
